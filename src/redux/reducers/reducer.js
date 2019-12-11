@@ -45,6 +45,8 @@ export const reducer = (state = initialState, { type, payload }) => {
           return feature.index === payload
         })
 
+      const costDeducted = state.car.features[removeThisIndex].price
+
       const newFeatures = state.car.features.slice()
       newFeatures.splice(removeThisIndex, 1)
 
@@ -52,8 +54,9 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         car: {
           ...state.car,
-          features: newFeatures
-        }
+          features: newFeatures,
+        },
+        additionalPrice: state.additionalPrice - costDeducted
       }
 
     default:
