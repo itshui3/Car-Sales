@@ -1,14 +1,18 @@
+// React
 import React from 'react';
+// Redux
+import { connect } from 'react-redux';
+// Child Component
 import AdditionalFeature from './AdditionalFeature';
 
 const AdditionalFeatures = props => {
   return (
     <div className="content">
       <h4>Additional Features</h4>
-      {props.additionalFeatures.length ? (
+      {props.features ? (
         <ol type="1">
-          {props.additionalFeatures.map(item => (
-            <AdditionalFeature key={item.id} feature={item} />
+          {props.features.map(item => (
+            <AdditionalFeature key={() => Date.now()} feature={item} />
           ))}
         </ol>
       ) : (
@@ -18,4 +22,10 @@ const AdditionalFeatures = props => {
   );
 };
 
-export default AdditionalFeatures;
+const mapStateToProps = state => {
+  return {
+    features: state.additionalFeatures
+  }
+}
+
+export default connect(mapStateToProps)(AdditionalFeatures);
