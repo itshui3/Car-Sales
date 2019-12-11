@@ -1,5 +1,6 @@
 import { 
-  ADD_FEATURE
+  ADD_FEATURE,
+  REMOVE_FEATURE
 } from '../actions/featurePurchaseActions'
 
 const initialState = {
@@ -26,6 +27,7 @@ export const reducer = (state = initialState, { type, payload }) => {
         .find(feature => {
           return (feature.id === payload)
         })
+      addThis.index = Date.now()
       return {
         ...state,
         additionalPrice: state.additionalPrice +  addThis.price,
@@ -37,6 +39,23 @@ export const reducer = (state = initialState, { type, payload }) => {
           ]
         }
       }
+    case REMOVE_FEATURE:
+      const removeThisIndex = state.car.features
+        .findIndex(feature => {
+          return feature.index === payload
+        })
+
+      const newFeatures = state.car.features.slice()
+      newFeatures.splice(removeThisIndex, 1)
+
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: newFeatures
+        }
+      }
+
     default:
       return state
   }

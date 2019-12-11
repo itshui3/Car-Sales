@@ -11,8 +11,12 @@ const AdditionalFeatures = props => {
       <h4>Additional Features</h4>
       {props.features ? (
         <ol type="1">
-          {props.features.map(item => (
-            <AdditionalFeature key={() => Date.now()} feature={item} />
+          {props.features.map((item, index) => (
+            <AdditionalFeature 
+              key={index}
+              index={index}
+              feature={item} 
+            />
           ))}
         </ol>
       ) : (

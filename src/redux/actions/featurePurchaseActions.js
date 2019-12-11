@@ -5,3 +5,11 @@ export const addFeature = id => {
     payload: id
   }
 }
+
+export const REMOVE_FEATURE = 'REMOVE_FEATURE'
+export const removeFeature = index => {
+  return {
+    type: REMOVE_FEATURE,
+    payload: index
+  }
+}

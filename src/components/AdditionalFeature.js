@@ -6,7 +6,6 @@ import { addFeature } from '../redux/actions/featurePurchaseActions'
 
 const AdditionalFeature = props => {
   const handleClick = ev => {
-    console.log('handling add click')
     props.addFeature(props.feature.id)
   }
   return (
