@@ -13,7 +13,7 @@ function CarSelection(props) {
         {
           props.cars && props.cars.map((car, index) => (
             <div key={index}>
-              <Link to={`/${index}`}>{car.name}</Link>
+              <Link to={`/cars/${index}`}>{car.name}</Link>
             </div>
           ))
         }

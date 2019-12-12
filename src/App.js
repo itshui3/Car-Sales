@@ -14,12 +14,12 @@ const App = () => {
       <div className="box">
         {/* Car Selection will have a set of links to each available vehicle, marking it in state.selectedCar by index string */}
         <CarSelection />
-        <Route path="/:id" component={Header} />
-        <AddedFeatures />
+        <Route path="/cars/:id" component={Header} />
+        <Route path="/cars" component={AddedFeatures} />
       </div>
       <div className="box">
-        <AdditionalFeatures />
-        <Route path="/:id" component={Total} />
+        <Route path="/cars" component={AdditionalFeatures} />
+        <Route path="/cars/:id" component={Total} />
       </div>
     </div>
   );
