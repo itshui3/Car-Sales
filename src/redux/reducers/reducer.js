@@ -55,7 +55,8 @@ export const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         car: {
-          ...state.cars[Number(payload)]
+          ...state.cars[Number(payload)],
+          features: []
         },
         additionalPrice: 0
       }
