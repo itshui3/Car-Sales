@@ -1,10 +1,16 @@
 // React
-import React from 'react';
+import React, { useEffect } from 'react';
 // Redux
 import { connect } from 'react-redux'
-
+import { selectVehicle } from '../redux/actions/selectVehicleActions'
 
 const Header = props => {
+  const { id } = props.match.params
+  // I have ID of params here, I need to use this to give information about selected Vehicle
+  useEffect(() => {
+    props.selectVehicle(id)
+  }, [id])
+
   return (
     <>
       <figure className="image is-128x128">
@@ -24,4 +30,6 @@ const mapStateToProps = ({ car }) => {
   }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, {
+  selectVehicle: selectVehicle
+})(Header);
