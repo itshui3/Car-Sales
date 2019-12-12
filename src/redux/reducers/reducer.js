@@ -5,7 +5,7 @@ import {
 import {
   SET_SELECT_VEHICLE
 } from '../actions/selectVehicleActions'
-import { numericLiteral } from '@babel/types'
+
 
 const initialState = {
   additionalPrice: 0,
@@ -56,7 +56,8 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         car: {
           ...state.cars[Number(payload)]
-        }
+        },
+        additionalPrice: 0
       }
 
     case ADD_FEATURE:
